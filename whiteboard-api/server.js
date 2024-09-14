@@ -1,5 +1,7 @@
 const express = require("express");
 const mongoose = require("mongoose");
+const bodyParser = require("body-parser");
+const cors = require("cors");
 
 require("dotenv").config();
 
@@ -9,6 +11,16 @@ const app = express();
 app.get("/", (req, res) => {
   res.json("Hello world");
 });
+
+// routes
+const whiteboardRoutes = require("./routes/whiteboard.routes");
+
+// middlewares
+app.use(bodyParser.urlencoded({ extended: true }));
+app.use(express.json());
+app.use(cors());
+
+app.use("/api", whiteboardRoutes);
 
 mongoose
   .connect(process.env.MONGODB_URI)
