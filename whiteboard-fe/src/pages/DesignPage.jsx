@@ -6,16 +6,21 @@ import { useNavigate } from "react-router-dom";
 
 function DesignPage() {
   const [designs, setDesigns] = useState([]);
+  const [loading, setLoading] = useState(true);
   const navigate = useNavigate();
 
   // Fetch all designs from the backend
   useEffect(() => {
     const fetchDesigns = async () => {
       try {
-        const response = await axios.get("https://whiteboard-api-self.vercel.app/api");
+        const response = await axios.get(
+          "https://whiteboard-api-self.vercel.app/api"
+        );
         setDesigns(response.data);
       } catch (error) {
         console.error("Error fetching designs:", error);
+      } finally {
+        setLoading(false);
       }
     };
 
@@ -31,12 +36,22 @@ function DesignPage() {
       console.error("Error deleting design:", error);
     }
   };
- 
+
   // Edit a design
   const editDesign = (id) => {
     console.log("Edit design", id);
     navigate(`/edit/${id}`);
   };
+
+  if (loading) {
+    return (
+      <>
+        <Navbar />
+        <h1 className="text-2xl text-center my-8">Your Designs</h1>
+        <p className="text-center">Loading...</p>
+      </>
+    );
+  }
 
   return (
     <>
