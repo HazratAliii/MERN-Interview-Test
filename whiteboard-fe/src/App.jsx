@@ -237,6 +237,7 @@ const App = () => {
         background: "#3C3C3C",
         objects: canvasData.objects,
       };
+      console.log("Object ", obj);
       try {
         if (isEditMode) {
           await axios.put(
