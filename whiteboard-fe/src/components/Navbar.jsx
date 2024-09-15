@@ -13,7 +13,7 @@ const Navbar = () => {
         </span>
         <span className="text-xl cursor-pointer">
           <Link to={location.pathname === "/" ? "/designs" : "/"}>
-            {location.pathname === "/" ? "Your design" : "Create design"}
+            {location.pathname === "/" ? "Your designs" : "Create design"}
           </Link>
         </span>
       </div>
