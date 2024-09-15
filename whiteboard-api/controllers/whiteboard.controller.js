@@ -1,5 +1,6 @@
 const Design = require("../models/Design/Design.model");
 
+// Create design
 exports.postADesign = async (req, res) => {
   try {
     const design = new Design(req.body);
@@ -17,6 +18,8 @@ exports.getAllDesigns = async (req, res) => {
     console.log("Error ", e);
   }
 };
+
+// Get all designs
 exports.getSignleDesign = async (req, res) => {
   try {
     const data = await Design.findById({ _id: req.params.id });
@@ -26,6 +29,8 @@ exports.getSignleDesign = async (req, res) => {
     console.log("Error ", e);
   }
 };
+
+// Update a design
 exports.updateDesign = async (req, res) => {
   const { id } = req.params;
   const updatedDesign = req.body;
@@ -39,6 +44,8 @@ exports.updateDesign = async (req, res) => {
     res.status(500).send("Error updating design");
   }
 };
+
+// Delete a design
 exports.deleteDesign = async (req, res) => {
   try {
     const design = await Design.findByIdAndDelete(req.params.id);
