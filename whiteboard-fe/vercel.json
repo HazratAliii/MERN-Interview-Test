@@ -1,14 +1,10 @@
-[
-  {
-    "src": "/",
-    "dest": "/"
-  },
-  {
-    "src": "/designs",
-    "dest": "designs"
-  },
-  {
-    "src": "/edit/:id",
-    "dest": "/edit/:id"
-  }
-]
+{
+  "builds": [
+    {
+      "src": "index.html",
+      "use": "@vercel/static-build",
+      "config": { "distDir": "dist" }
+    }
+  ],
+  "routes": [{ "src": "/(.*)", "dest": "/" }]
+}
