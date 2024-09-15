@@ -12,7 +12,7 @@ function DesignPage() {
   useEffect(() => {
     const fetchDesigns = async () => {
       try {
-        const response = await axios.get("http://localhost:5000/api");
+        const response = await axios.get("https://whiteboard-api-self.vercel.app/api");
         setDesigns(response.data);
       } catch (error) {
         console.error("Error fetching designs:", error);
@@ -25,7 +25,7 @@ function DesignPage() {
   // Delete a design
   const deleteDesign = async (id) => {
     try {
-      await axios.delete(`http://localhost:5000/api/${id}`);
+      await axios.delete(`https://whiteboard-api-self.vercel.app/api/${id}`);
       setDesigns(designs.filter((design) => design._id !== id));
     } catch (error) {
       console.error("Error deleting design:", error);

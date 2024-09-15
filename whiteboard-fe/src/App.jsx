@@ -98,7 +98,9 @@ const App = () => {
     const fetchDesignData = async () => {
       if (isEditMode && canvas) {
         try {
-          const response = await axios.get(`http://localhost:5000/api/${id}`);
+          const response = await axios.get(
+            `https://whiteboard-api-self.vercel.app/api/${id}`
+          );
           const design = response.data;
 
           // console.log("Fetched design data: ", design);
@@ -237,9 +239,12 @@ const App = () => {
       };
       try {
         if (isEditMode) {
-          await axios.put(`http://localhost:5000/api/${id}`, obj);
+          await axios.put(
+            `https://whiteboard-api-self.vercel.app/api/${id}`,
+            obj
+          );
         } else {
-          await axios.post("http://localhost:5000/api", obj);
+          await axios.post("https://whiteboard-api-self.vercel.app/api", obj);
         }
         alert("Design saved successfully!");
         navigate("/designs");
