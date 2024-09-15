@@ -1,0 +1,14 @@
+[
+  {
+    "src": "/",
+    "dest": "/"
+  },
+  {
+    "src": "/designs",
+    "dest": "designs"
+  },
+  {
+    "src": "/edit/:id",
+    "dest": "/edit/:id"
+  }
+]
