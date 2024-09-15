@@ -25,9 +25,13 @@ app.use("/api", whiteboardRoutes);
 mongoose
   .connect(process.env.MONGODB_URI)
   .then(() => {
-    app.listen(port, () => {
-      console.log(`Server listening on port ${port}`);
-    });
+    // app.listen(port, () => {
+    // });
+    if (process.env.PROD !== "production") {
+      app.listen(port, () => {
+        console.log(`Server listening on port ${port}`);
+      });
+    }
   })
   .catch((e) => {
     console.log(e);
